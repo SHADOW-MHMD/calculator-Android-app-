@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:id="@+id/displayCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_display"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/expressionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:minHeight="40dp"
+            android:textColor="@color/on_surface"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:minHeight="48dp"
+            android:text="0"
+            android:textColor="@color/on_surface"
+            android:textStyle="bold"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/keyboardScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/displayCard"
+        app:layout_constraintVertical_bias="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btnSin" style="@style/Calc.FunctionButton" android:text="sin" />
+                <Button android:id="@+id/btnCos" style="@style/Calc.FunctionButton" android:text="cos" />
+                <Button android:id="@+id/btnTan" style="@style/Calc.FunctionButton" android:text="tan" />
+                <Button android:id="@+id/btnLn" style="@style/Calc.FunctionButton" android:text="ln" />
+                <Button android:id="@+id/btnLog" style="@style/Calc.FunctionButton" android:text="log" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btnSqrt" style="@style/Calc.FunctionButton" android:text="√" />
+                <Button android:id="@+id/btnPower" style="@style/Calc.FunctionButton" android:text="xʸ" />
+                <Button android:id="@+id/btnSquare" style="@style/Calc.FunctionButton" android:text="x²" />
+                <Button android:id="@+id/btnPi" style="@style/Calc.FunctionButton" android:text="π" />
+                <Button android:id="@+id/btnE" style="@style/Calc.FunctionButton" android:text="e" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btnAsin" style="@style/Calc.FunctionButton" android:text="asin" />
+                <Button android:id="@+id/btnAcos" style="@style/Calc.FunctionButton" android:text="acos" />
+                <Button android:id="@+id/btnAtan" style="@style/Calc.FunctionButton" android:text="atan" />
+                <Button android:id="@+id/btnFact" style="@style/Calc.FunctionButton" android:text="n!" />
+                <Button android:id="@+id/btnPercent" style="@style/Calc.FunctionButton" android:text="%" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btnClear" style="@style/Calc.OperatorButton" android:text="AC" />
+                <Button android:id="@+id/btnBack" style="@style/Calc.OperatorButton" android:text="⌫" />
+                <Button android:id="@+id/btnOpen" style="@style/Calc.OperatorButton" android:text="(" />
+                <Button android:id="@+id/btnClose" style="@style/Calc.OperatorButton" android:text=")" />
+                <Button android:id="@+id/btnDivide" style="@style/Calc.OperatorButton" android:text="÷" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btn7" style="@style/Calc.NumberButton" android:text="7" />
+                <Button android:id="@+id/btn8" style="@style/Calc.NumberButton" android:text="8" />
+                <Button android:id="@+id/btn9" style="@style/Calc.NumberButton" android:text="9" />
+                <Button android:id="@+id/btnMultiply" style="@style/Calc.OperatorButton" android:text="×" />
+                <Button android:id="@+id/btnMinus" style="@style/Calc.OperatorButton" android:text="-" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btn4" style="@style/Calc.NumberButton" android:text="4" />
+                <Button android:id="@+id/btn5" style="@style/Calc.NumberButton" android:text="5" />
+                <Button android:id="@+id/btn6" style="@style/Calc.NumberButton" android:text="6" />
+                <Button android:id="@+id/btnPlus" style="@style/Calc.OperatorButton" android:text="+" />
+                <Button android:id="@+id/btnExp" style="@style/Calc.OperatorButton" android:text="EXP" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Button android:id="@+id/btn1" style="@style/Calc.NumberButton" android:text="1" />
+                <Button android:id="@+id/btn2" style="@style/Calc.NumberButton" android:text="2" />
+                <Button android:id="@+id/btn3" style="@style/Calc.NumberButton" android:text="3" />
+                <Button android:id="@+id/btn0" style="@style/Calc.NumberButton" android:text="0" />
+                <Button android:id="@+id/btnDot" style="@style/Calc.NumberButton" android:text="." />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnEquals"
+                style="@style/Calc.EqualsButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="=" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
