@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Scientific Calculator</string>
+    <string name="error_text">Error</string>
 </resources>

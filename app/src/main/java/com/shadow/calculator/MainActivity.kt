@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                 expression = formatNumber(value)
                 refreshDisplay(showPreview = false)
             } else {
-                resultText.text = getString(android.R.string.unknownName)
+                resultText.text = getString(R.string.error_text)
             }
         }
     }
@@ -130,10 +130,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun formatNumber(value: Double): String {
+        if (!value.isFinite()) return getString(R.string.error_text)
         return if (value % 1.0 == 0.0) {
             value.toLong().toString()
         } else {
-            "%s".format(java.util.Locale.US, "%.10f", value).trimEnd('0').trimEnd('.')
+            String.format(java.util.Locale.US, "%.10f", value).trimEnd('0').trimEnd('.')
         }
     }
 }
@@ -294,13 +295,20 @@ private class ExpressionParser(source: String) {
             out.append(c)
             if (i == raw.lastIndex) continue
 
-            val next = raw[i + 1]
-            val leftTokenEndsValue = c.isDigit() || c == '.' || c == ')' || c == '!' || c == 'e' || c == 'i'
-            val rightTokenStartsValue = next.isDigit() || next == '(' || next.isLetter()
-            if (leftTokenEndsValue && rightTokenStartsValue && !(c == 'e' && next.isDigit())) {
+            val leftTokenEndsValue = c.isDigit() || c == '.' || c == ')' || c == '!' || isConstantEnd(raw, i)
+            val rightTokenStartsValue = raw[i + 1].isDigit() || raw[i + 1] == '.' || raw[i + 1] == '(' || raw[i + 1].isLetter()
+            if (leftTokenEndsValue && rightTokenStartsValue) {
                 out.append('*')
             }
         }
         return out.toString()
+    }
+
+    private fun isConstantEnd(raw: String, index: Int): Boolean {
+        if (!raw[index].isLetter()) return false
+
+        val start = raw.lastIndexOfAny(charArrayOf('+', '-', '*', '/', '%', '^', '(', ')', '!'), index - 1) + 1
+        val token = raw.substring(start, index + 1)
+        return token == "e" || token == "pi"
     }
 }
